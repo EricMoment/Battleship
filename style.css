@@ -1,0 +1,165 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+};
+
+haeder {
+  height: 100px;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1 0 auto;
+}
+
+a {
+  font-size: 6rem;
+  font-family: 'Courier New', monospace;
+  text-decoration: none;
+}
+
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: blue;
+}
+
+.ship_number {
+  font-size: 1.5rem;
+}
+
+.restart {
+  font-size: 1.5rem;
+  width: 200px;
+  border-radius: 15px;
+  border: none;
+  border: 1px solid gray;
+}
+
+.restart:hover {
+  background-color: lightcoral;
+  color: whitesmoke;
+}
+
+.game_boards {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 816px;
+}
+
+.player_container,
+.computer_container {
+  height: 400px;
+  width: 400px;
+  display: grid;
+  grid-template-columns: repeat(10,1fr);
+  grid-template-rows: repeat(10,1fr);
+}
+
+.player_square {
+  color: red;
+  background-color: rgb(252, 192, 192);
+  border: 1px solid rgb(125, 59, 59);
+}
+
+.your_map, 
+.computer_map,
+.computer_ships_destroyed,
+.your_ships_destroyed {
+  min-height: calc(2*(22px));
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.your_ships_destroyed {
+  color: rgb(30, 0, 255);
+}
+
+.computer_ships_destroyed {
+  color: red;
+}
+
+.messFromCom,
+.messFromPlayer {
+  text-align: center;
+  font-size: 1.2rem;
+  min-height: 26.4px;
+  margin-bottom: 8px;
+}
+
+footer {
+  width: 100%;
+  height: 44px;   /* Height of the footer */
+  background: rgb(198, 99, 248);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+@media (max-width: 816px) {
+  body {
+    display: inline-flex
+  }
+  a {
+    font-size: 5.5rem;
+  }
+  .game_boards {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .leftside, .rightside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .player_container,
+  .computer_container {
+    height: 500px;
+    width: 500px;
+    gap: 4px
+  }
+
+}

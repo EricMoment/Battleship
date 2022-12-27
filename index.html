@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="javascript.js"></script>
+  <title>BattleShip Game</title>
+</head>
+
+<body>
+  <header>
+    <a href="https://www.youtube.com/watch?v=RY4nAyRgkLo" title="Learn the rules">BattleShip</a>
+  </header>
+  <div class="middle">
+    <div class="ship_number">8 Ships. Lengths: 5, 4, 3, 3, 2, 1, 1, 1</div>
+    <button class="restart">Restart</button>
+    <div class="game_boards">
+      <div class="leftside">
+        <div class="messFromCom">Any ship destroyed will be showed here</div>
+        <div class="player_container">
+          <button class="player_square" id="0,0p"></button>
+          <button class="player_square" id="0,1p"></button>
+          <button class="player_square" id="0,2p"></button>
+          <button class="player_square" id="0,3p"></button>
+          <button class="player_square" id="0,4p"></button>
+          <button class="player_square" id="0,5p"></button>
+          <button class="player_square" id="0,6p"></button>
+          <button class="player_square" id="0,7p"></button>
+          <button class="player_square" id="0,8p"></button>
+          <button class="player_square" id="0,9p"></button>
+          <button class="player_square" id="1,0p"></button>
+          <button class="player_square" id="1,1p"></button>
+          <button class="player_square" id="1,2p"></button>
+          <button class="player_square" id="1,3p"></button>
+          <button class="player_square" id="1,4p"></button>
+          <button class="player_square" id="1,5p"></button>
+          <button class="player_square" id="1,6p"></button>
+          <button class="player_square" id="1,7p"></button>
+          <button class="player_square" id="1,8p"></button>
+          <button class="player_square" id="1,9p"></button>
+          <button class="player_square" id="2,0p"></button>
+          <button class="player_square" id="2,1p"></button>
+          <button class="player_square" id="2,2p"></button>
+          <button class="player_square" id="2,3p"></button>
+          <button class="player_square" id="2,4p"></button>
+          <button class="player_square" id="2,5p"></button>
+          <button class="player_square" id="2,6p"></button>
+          <button class="player_square" id="2,7p"></button>
+          <button class="player_square" id="2,8p"></button>
+          <button class="player_square" id="2,9p"></button>
+          <button class="player_square" id="3,0p"></button>
+          <button class="player_square" id="3,1p"></button>
+          <button class="player_square" id="3,2p"></button>
+          <button class="player_square" id="3,3p"></button>
+          <button class="player_square" id="3,4p"></button>
+          <button class="player_square" id="3,5p"></button>
+          <button class="player_square" id="3,6p"></button>
+          <button class="player_square" id="3,7p"></button>
+          <button class="player_square" id="3,8p"></button>
+          <button class="player_square" id="3,9p"></button>
+          <button class="player_square" id="4,0p"></button>
+          <button class="player_square" id="4,1p"></button>
+          <button class="player_square" id="4,2p"></button>
+          <button class="player_square" id="4,3p"></button>
+          <button class="player_square" id="4,4p"></button>
+          <button class="player_square" id="4,5p"></button>
+          <button class="player_square" id="4,6p"></button>
+          <button class="player_square" id="4,7p"></button>
+          <button class="player_square" id="4,8p"></button>
+          <button class="player_square" id="4,9p"></button>
+          <button class="player_square" id="5,0p"></button>
+          <button class="player_square" id="5,1p"></button>
+          <button class="player_square" id="5,2p"></button>
+          <button class="player_square" id="5,3p"></button>
+          <button class="player_square" id="5,4p"></button>
+          <button class="player_square" id="5,5p"></button>
+          <button class="player_square" id="5,6p"></button>
+          <button class="player_square" id="5,7p"></button>
+          <button class="player_square" id="5,8p"></button>
+          <button class="player_square" id="5,9p"></button>
+          <button class="player_square" id="6,0p"></button>
+          <button class="player_square" id="6,1p"></button>
+          <button class="player_square" id="6,2p"></button>
+          <button class="player_square" id="6,3p"></button>
+          <button class="player_square" id="6,4p"></button>
+          <button class="player_square" id="6,5p"></button>
+          <button class="player_square" id="6,6p"></button>
+          <button class="player_square" id="6,7p"></button>
+          <button class="player_square" id="6,8p"></button>
+          <button class="player_square" id="6,9p"></button>
+          <button class="player_square" id="7,0p"></button>
+          <button class="player_square" id="7,1p"></button>
+          <button class="player_square" id="7,2p"></button>
+          <button class="player_square" id="7,3p"></button>
+          <button class="player_square" id="7,4p"></button>
+          <button class="player_square" id="7,5p"></button>
+          <button class="player_square" id="7,6p"></button>
+          <button class="player_square" id="7,7p"></button>
+          <button class="player_square" id="7,8p"></button>
+          <button class="player_square" id="7,9p"></button>
+          <button class="player_square" id="8,0p"></button>
+          <button class="player_square" id="8,1p"></button>
+          <button class="player_square" id="8,2p"></button>
+          <button class="player_square" id="8,3p"></button>
+          <button class="player_square" id="8,4p"></button>
+          <button class="player_square" id="8,5p"></button>
+          <button class="player_square" id="8,6p"></button>
+          <button class="player_square" id="8,7p"></button>
+          <button class="player_square" id="8,8p"></button>
+          <button class="player_square" id="8,9p"></button>
+          <button class="player_square" id="9,0p"></button>
+          <button class="player_square" id="9,1p"></button>
+          <button class="player_square" id="9,2p"></button>
+          <button class="player_square" id="9,3p"></button>
+          <button class="player_square" id="9,4p"></button>
+          <button class="player_square" id="9,5p"></button>
+          <button class="player_square" id="9,6p"></button>
+          <button class="player_square" id="9,7p"></button>
+          <button class="player_square" id="9,8p"></button>
+          <button class="player_square" id="9,9p"></button>
+        </div>
+        <div class="your_map">Your Map</div>
+        <div class="your_ships_destroyed">Player Ships Destroyed: 0</div>
+      </div>
+      <div class="rightside">
+        <div class="messFromPlayer">Any ship destroyed will be showed here</div>
+        <div class="computer_container">
+          <button class="computer_square" id="0,0c"></button>
+          <button class="computer_square" id="0,1c"></button>
+          <button class="computer_square" id="0,2c"></button>
+          <button class="computer_square" id="0,3c"></button>
+          <button class="computer_square" id="0,4c"></button>
+          <button class="computer_square" id="0,5c"></button>
+          <button class="computer_square" id="0,6c"></button>
+          <button class="computer_square" id="0,7c"></button>
+          <button class="computer_square" id="0,8c"></button>
+          <button class="computer_square" id="0,9c"></button>
+          <button class="computer_square" id="1,0c"></button>
+          <button class="computer_square" id="1,1c"></button>
+          <button class="computer_square" id="1,2c"></button>
+          <button class="computer_square" id="1,3c"></button>
+          <button class="computer_square" id="1,4c"></button>
+          <button class="computer_square" id="1,5c"></button>
+          <button class="computer_square" id="1,6c"></button>
+          <button class="computer_square" id="1,7c"></button>
+          <button class="computer_square" id="1,8c"></button>
+          <button class="computer_square" id="1,9c"></button>
+          <button class="computer_square" id="2,0c"></button>
+          <button class="computer_square" id="2,1c"></button>
+          <button class="computer_square" id="2,2c"></button>
+          <button class="computer_square" id="2,3c"></button>
+          <button class="computer_square" id="2,4c"></button>
+          <button class="computer_square" id="2,5c"></button>
+          <button class="computer_square" id="2,6c"></button>
+          <button class="computer_square" id="2,7c"></button>
+          <button class="computer_square" id="2,8c"></button>
+          <button class="computer_square" id="2,9c"></button>
+          <button class="computer_square" id="3,0c"></button>
+          <button class="computer_square" id="3,1c"></button>
+          <button class="computer_square" id="3,2c"></button>
+          <button class="computer_square" id="3,3c"></button>
+          <button class="computer_square" id="3,4c"></button>
+          <button class="computer_square" id="3,5c"></button>
+          <button class="computer_square" id="3,6c"></button>
+          <button class="computer_square" id="3,7c"></button>
+          <button class="computer_square" id="3,8c"></button>
+          <button class="computer_square" id="3,9c"></button>
+          <button class="computer_square" id="4,0c"></button>
+          <button class="computer_square" id="4,1c"></button>
+          <button class="computer_square" id="4,2c"></button>
+          <button class="computer_square" id="4,3c"></button>
+          <button class="computer_square" id="4,4c"></button>
+          <button class="computer_square" id="4,5c"></button>
+          <button class="computer_square" id="4,6c"></button>
+          <button class="computer_square" id="4,7c"></button>
+          <button class="computer_square" id="4,8c"></button>
+          <button class="computer_square" id="4,9c"></button>
+          <button class="computer_square" id="5,0c"></button>
+          <button class="computer_square" id="5,1c"></button>
+          <button class="computer_square" id="5,2c"></button>
+          <button class="computer_square" id="5,3c"></button>
+          <button class="computer_square" id="5,4c"></button>
+          <button class="computer_square" id="5,5c"></button>
+          <button class="computer_square" id="5,6c"></button>
+          <button class="computer_square" id="5,7c"></button>
+          <button class="computer_square" id="5,8c"></button>
+          <button class="computer_square" id="5,9c"></button>
+          <button class="computer_square" id="6,0c"></button>
+          <button class="computer_square" id="6,1c"></button>
+          <button class="computer_square" id="6,2c"></button>
+          <button class="computer_square" id="6,3c"></button>
+          <button class="computer_square" id="6,4c"></button>
+          <button class="computer_square" id="6,5c"></button>
+          <button class="computer_square" id="6,6c"></button>
+          <button class="computer_square" id="6,7c"></button>
+          <button class="computer_square" id="6,8c"></button>
+          <button class="computer_square" id="6,9c"></button>
+          <button class="computer_square" id="7,0c"></button>
+          <button class="computer_square" id="7,1c"></button>
+          <button class="computer_square" id="7,2c"></button>
+          <button class="computer_square" id="7,3c"></button>
+          <button class="computer_square" id="7,4c"></button>
+          <button class="computer_square" id="7,5c"></button>
+          <button class="computer_square" id="7,6c"></button>
+          <button class="computer_square" id="7,7c"></button>
+          <button class="computer_square" id="7,8c"></button>
+          <button class="computer_square" id="7,9c"></button>
+          <button class="computer_square" id="8,0c"></button>
+          <button class="computer_square" id="8,1c"></button>
+          <button class="computer_square" id="8,2c"></button>
+          <button class="computer_square" id="8,3c"></button>
+          <button class="computer_square" id="8,4c"></button>
+          <button class="computer_square" id="8,5c"></button>
+          <button class="computer_square" id="8,6c"></button>
+          <button class="computer_square" id="8,7c"></button>
+          <button class="computer_square" id="8,8c"></button>
+          <button class="computer_square" id="8,9c"></button>
+          <button class="computer_square" id="9,0c"></button>
+          <button class="computer_square" id="9,1c"></button>
+          <button class="computer_square" id="9,2c"></button>
+          <button class="computer_square" id="9,3c"></button>
+          <button class="computer_square" id="9,4c"></button>
+          <button class="computer_square" id="9,5c"></button>
+          <button class="computer_square" id="9,6c"></button>
+          <button class="computer_square" id="9,7c"></button>
+          <button class="computer_square" id="9,8c"></button>
+          <button class="computer_square" id="9,9c"></button>
+        </div>
+        <div class="computer_map">Computer's Map</div>
+        <div class="computer_ships_destroyed">Computer Ships Destroyed: 0</div>
+      </div>
+    </div>  
+
+  </div>
+  <footer>
+    <div class="credits">Created by EricMoment</div>
+  </footer>
+</body>
+
+</html>
