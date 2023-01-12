@@ -183,7 +183,8 @@ footer {
 }
 @media (max-width: 880px) {
   body {
-    display: flex
+    display: flex;
+    -webkit-text-size-adjust: 100%;
   }
   .title {
     font-size: 4rem;
@@ -225,6 +226,9 @@ footer {
 }
 
 @media (max-width: 350px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+  }
   .title {
     font-size: 2rem;
     margin: .5rem;
