@@ -195,7 +195,7 @@ footer {
   }
   .player_square,
   .computer_square {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
   .side_details {
     display: flex;
@@ -221,7 +221,6 @@ footer {
   .computer_container {
     height: 375px;
     width: 375px;
-    gap: 4px
   }
 }
 
@@ -238,7 +237,6 @@ footer {
   .computer_container {
     height: 250px;
     width: 250px;
-    gap: 4px
   }
 
   .side_details {
