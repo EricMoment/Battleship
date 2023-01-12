@@ -2,6 +2,7 @@ const Ship = (length) => {
   let positions = []
   let hits = 0;
   let sunk = false
+  let responsibleDiv;
   const addPos = (row, column) => {
     positions.push([row, column])
   }
@@ -10,19 +11,21 @@ const Ship = (length) => {
   const status = () => sunk
   const getLength = () => length
   const counted = () => sunk = 'Counted'
+  const addResponsibleDiv = (div) => {
+    responsibleDiv = div
+  }
+  const getResponsibleDiv = () => responsibleDiv
   // if hit, the ship's hit will up by 1, and if hits = length, the ship is sunk
   const isSunk = () => {
     hits++
     if (hits === length) {
       sunk = true
-      //console.log(`Ship with length of ${length} has sunk`)
     }
-    //console.log(`A ship has been hit`)
   }
-  return { isSunk, status, addPos, getPos, counted, getLength }
+  return { isSunk, status, addPos, getPos, counted, getLength, addResponsibleDiv, getResponsibleDiv }
 }
 
-const Gameboard = (player) => {
+const Gameboard = (player, div) => {
   const board = [ //O, X, '*', ' ' 
     //c 0    1    2    3    4    5    6    7    8    9      r
     [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '], //0
@@ -112,6 +115,7 @@ const Gameboard = (player) => {
     let direction = directions[Math.floor(Math.random() * directions.length)]
     //every time #addships is called, a ship from factory is added in player's ships object
     player.addShips(index, length)
+    player.ships[index].addResponsibleDiv(div[index])
     switch (direction) {
       // two things, update board and update ships possessed by player/AI
       case 'left':
@@ -222,8 +226,6 @@ const Computer = () => {
   const addShips = (index, length) => {
     ships[index] = Ship(length)
   }
-  const MessageToPlayer = document.querySelector('.messFromCom')
-  const MessageDestroyedShips = document.querySelector('.your_ships_destroyed')
   const previousHit = { cell: null, symbol: null }
   let lastShipHit
   let hasJustSunkaShip = false
@@ -272,16 +274,14 @@ const Computer = () => {
       }
       if (playersShips[shipIndex].status() === true) {
         playerShipDestroyed++
+        playersShips[shipIndex].getResponsibleDiv().style.backgroundColor = 'gray'
         //change status to counted so the playerShipDestroyed is not incred every loop.
         playersShips[shipIndex].counted()
         hasJustSunkaShip = true /* */
         lastShipHit = null /* */
-        MessageToPlayer.textContent = `Computer has destroyed your ship of length ${playersShips[shipIndex].getLength()}`
-        MessageDestroyedShips.textContent = `Player Ships Destroyed: ${playerShipDestroyed}`
         //console.log('Player Ships Destroyed:' + playerShipDestroyed)
       } else { 
         hasJustSunkaShip = false 
-        MessageToPlayer.textContent = ' '
       } /* */
       previousHit.cell = [row, column] /* */
       previousHit.symbol = 'O' /* */
@@ -293,7 +293,8 @@ const Computer = () => {
     //console.log(board)
     //win condition and message
     if (playerShipDestroyed === Object.keys(playersShips).length) {
-      MessageToPlayer.textContent = 'Computer has won~'
+      document.querySelector('.your_map').textContent = "Computer has won!"
+      document.querySelector('.computer_map').textContent = "You have lost!"
       document.querySelectorAll('.computer_square').forEach(square => {
         square.replaceWith(square.cloneNode(true))
       })
@@ -302,11 +303,36 @@ const Computer = () => {
   return { addShips, ships, moves }
 }
 
+function shipBars() {
+  const pShip1 = document.querySelector('.psd5')
+  const pShip2 = document.querySelector('.psd4')
+  const pShip3 = document.querySelector('.psd3-1')
+  const pShip4 = document.querySelector('.psd3-2')
+  const pShip5 = document.querySelector('.psd2')
+  const pShip6 = document.querySelector('.psd1-1')
+  const pShip7 = document.querySelector('.psd1-2')
+  const pShip8 = document.querySelector('.psd1-3')
+  const cShip1 = document.querySelector('.csd5')
+  const cShip2 = document.querySelector('.csd4')
+  const cShip3 = document.querySelector('.csd3-1')
+  const cShip4 = document.querySelector('.csd3-2')
+  const cShip5 = document.querySelector('.csd2')
+  const cShip6 = document.querySelector('.csd1-1')
+  const cShip7 = document.querySelector('.csd1-2')
+  const cShip8 = document.querySelector('.csd1-3')
+
+  const pShipDivs = [pShip1, pShip2, pShip3, pShip4, pShip5, pShip6, pShip7, pShip8]
+  const cShipDivs = [cShip1, cShip2, cShip3, cShip4, cShip5, cShip6, cShip7, cShip8]
+
+return {pShipDivs, cShipDivs}
+}
 function printBoard() {
+  // Gain Control of ship bars between both sides
+  const {pShipDivs, cShipDivs} = shipBars()
   const playersGen = Player('Arcas')
   const comGen = Computer()
-  const playerBoard = Gameboard(playersGen)
-  const comBoard =  Gameboard(comGen)
+  const playerBoard = Gameboard(playersGen, pShipDivs)
+  const comBoard =  Gameboard(comGen, cShipDivs)
   const shiplist = [5, 4, 3, 3, 2, 1, 1, 1] //change ships here
   for (let i = 0; i < shiplist.length; i++) {
     playerBoard.placeShips(shiplist[i], i)
@@ -331,8 +357,6 @@ function printBoard() {
   const playersShips = playersGen.ships
   const computersShips = comGen.ships
   const computer_board = comBoard.getBoard()
-  const MessageToComputer = document.querySelector('.messFromPlayer')
-  const MessageDestroyedShips = document.querySelector('.computer_ships_destroyed')
   //player moves. You have to use QSelectorAll because you need to remove each square's listener
   const computerSquaresHTML = document.querySelectorAll('.computer_square')
   computerSquaresHTML.forEach(square => {
@@ -357,12 +381,11 @@ function printBoard() {
         }
         if (computersShips[shipIndex].status() === true) {
           playersGen.playerDownsComShips()
+          computersShips[shipIndex].getResponsibleDiv().style.backgroundColor = 'gray'
           //change status to counted so the playerShipDestroyed is not incred every loop.
           computersShips[shipIndex].counted()
-          MessageToComputer.textContent = `Player has destroyed computer's ship of length ${computersShips[shipIndex].getLength()}`
-          MessageDestroyedShips.textContent = `Computer Ships Destroyed: ${playersGen.getComShipdestroyed()}`
           //console.log('Computer Ships Destroyed:' + playersGen.getComShipdestroyed())
-        } else {MessageToComputer.textContent = ' '}
+        } 
       }
       comBoard.boardHit(x, y) //update board on Board
       //console.log('Right Board: ')
@@ -370,7 +393,8 @@ function printBoard() {
       //So we dont accidentally click same square twice
       square.removeEventListener('click', e)
       if (playersGen.winCon()) {
-        MessageToComputer.textContent = `Player ${playersGen.name()} has won!!`
+        document.querySelector('.computer_map').textContent = "You have won!"
+        document.querySelector('.your_map').textContent = 'Computer has lost!'
         //remove all e listeners after a result is decided
         //credits: https://bobbyhadz.com/blog/javascript-remove-all-event-listeners-from-element
         computerSquaresHTML.forEach(square => square.replaceWith(square.cloneNode(true)))
@@ -384,16 +408,17 @@ function printBoard() {
   document.querySelector('.restart').addEventListener('click', function event() {
     /* note you can't use computerSquaresHTML here because 'return' above gets you out of function,
     hence computerSquaresHTML loses its reference. so have to queryall*/
+    document.querySelector('.your_map').textContent = "You hit computer's ships"
+    document.querySelector('.computer_map').textContent = "Computer hits your's ships"
     document.querySelectorAll('.computer_square').forEach(square => {
       square.textContent = ' ' //neccessary to clear right side (computer) board
       square.replaceWith(square.cloneNode(true)) //neccessary to clear repeated listeners
     })
+    const {pShipDivs, cShipDivs} = shipBars()
+    pShipDivs.forEach(div => div.style.backgroundColor = 'red')
+    cShipDivs.forEach(div => div.style.backgroundColor = 'blue')
     //neccessary to prevent repeated clicks 
     document.querySelector('.restart').removeEventListener('click', event)
-    document.querySelector('.messFromCom').textContent = 'Any ship destroyed will be showed here'
-    document.querySelector('.messFromPlayer').textContent = 'Any ship destroyed will be showed here'
-    document.querySelector('.your_ships_destroyed').textContent = 'Player Ships Destroyed: 0'
-    document.querySelector('.computer_ships_destroyed').textContent = 'Computer Ships Destroyed: 0'
     game()
   })
 })()

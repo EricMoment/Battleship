@@ -11,14 +11,13 @@
 
 <body>
   <header>
-    <a href="https://www.youtube.com/watch?v=RY4nAyRgkLo" title="Learn the rules">BattleShip</a>
+    <a class='title' href="https://www.youtube.com/watch?v=RY4nAyRgkLo" title="Learn the rules">BattleShip</a>
   </header>
   <div class="middle">
-    <div class="ship_number">8 Ships. Lengths: 5, 4, 3, 3, 2, 1, 1, 1</div>
+    <div class="ship_number">8 Ships in total. Lengths: 5, 4, 3, 3, 2, 1, 1, 1</div>
     <button class="restart">Restart</button>
     <div class="game_boards">
       <div class="leftside">
-        <div class="messFromCom">Any ship destroyed will be showed here</div>
         <div class="player_container">
           <button class="player_square" id="0,0p"></button>
           <button class="player_square" id="0,1p"></button>
@@ -121,11 +120,39 @@
           <button class="player_square" id="9,8p"></button>
           <button class="player_square" id="9,9p"></button>
         </div>
-        <div class="your_map">Your Map</div>
-        <div class="your_ships_destroyed">Player Ships Destroyed: 0</div>
+        <div class="your_map">Computer hits your ships</div>
+      </div>
+      <div class="side_details">
+        <div class="player_ship_details">
+          <div class="player_ship_details_part_1">
+            <div class="psd5"></div>
+            <div class="psd4"></div>
+            <div class="psd3-1"></div>
+          </div>
+          <div class="player_ship_details_part_2">
+            <div class="psd3-2"></div>
+            <div class="psd2"></div>
+            <div class="psd1-1"></div>
+            <div class="psd1-2"></div>
+            <div class="psd1-3"></div>
+          </div>
+        </div>
+        <div class="computer_ship_details">
+          <div class="computer_ship_details_part_1">
+            <div class="csd5"></div>
+            <div class="csd4"></div>
+            <div class="csd3-1"></div>
+          </div>
+          <div class="computer_ship_details_part_2">
+            <div class="csd3-2"></div>
+            <div class="csd2"></div>
+            <div class="csd1-1"></div>
+            <div class="csd1-2"></div>
+            <div class="csd1-3"></div>
+          </div>
+        </div>
       </div>
       <div class="rightside">
-        <div class="messFromPlayer">Any ship destroyed will be showed here</div>
         <div class="computer_container">
           <button class="computer_square" id="0,0c"></button>
           <button class="computer_square" id="0,1c"></button>
@@ -228,14 +255,13 @@
           <button class="computer_square" id="9,8c"></button>
           <button class="computer_square" id="9,9c"></button>
         </div>
-        <div class="computer_map">Computer's Map</div>
-        <div class="computer_ships_destroyed">Computer Ships Destroyed: 0</div>
+        <div class="computer_map">You hit computer's ships</div>
       </div>
     </div>  
 
   </div>
   <footer>
-    <div class="credits">Created by EricMoment</div>
+    <a class="credits" href="https://github.com/EricMoment/Battleship">Created by EricMoment</a>
   </footer>
 </body>
 
