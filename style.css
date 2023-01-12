@@ -184,7 +184,7 @@ footer {
 @media (max-width: 880px) {
   body {
     display: flex;
-    -webkit-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 0;
   }
   .title {
     font-size: 4rem;
@@ -196,7 +196,7 @@ footer {
   }
   .player_square,
   .computer_square {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
   .side_details {
     display: flex;
@@ -227,7 +227,7 @@ footer {
 
 @media (max-width: 350px) {
   body {
-    -webkit-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 0;
   }
   .title {
     font-size: 2rem;
@@ -235,7 +235,7 @@ footer {
   }
   .player_square,
   .computer_square {
-    font-size: .5rem;
+    font-size: .35rem;
   }
   .player_container,
   .computer_container {
