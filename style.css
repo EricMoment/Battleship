@@ -86,7 +86,6 @@ header {
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
-  width: 816px;
 }
 
 .player_container,
@@ -184,20 +183,24 @@ footer {
 }
 @media (max-width: 880px) {
   body {
-    display: inline-flex
+    display: flex
   }
   .title {
-    font-size: 5.5rem;
+    font-size: 4rem;
+    margin: .5rem;
   }
   .game_boards {
     display: flex;
     flex-direction: column-reverse;
   }
-
+  .player_square,
+  .computer_square {
+    font-size: 1rem;
+  }
   .side_details {
     display: flex;
     flex-direction: row;
-    width: 720px;
+    width: 350px;
     justify-content: space-around;
   }
 
@@ -216,8 +219,55 @@ footer {
   }
   .player_container,
   .computer_container {
-    height: 720px;
-    width: 720px;
+    height: 375px;
+    width: 375px;
     gap: 4px
+  }
+}
+
+@media (max-width: 350px) {
+  .title {
+    font-size: 2rem;
+    margin: .5rem;
+  }
+  .player_square,
+  .computer_square {
+    font-size: .5rem;
+  }
+  .player_container,
+  .computer_container {
+    height: 250px;
+    width: 250px;
+    gap: 4px
+  }
+
+  .side_details {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+
+  }
+  .psd5, .csd5 {
+    height: 5px;
+    width: 25px;
+  }
+  .psd4, .csd4 {
+    height: 5px;
+    width: 20px;
+  }
+  .psd3-1, .csd3-1,
+  .psd3-2, .csd3-2 {
+    height: 5px;
+    width: 15px;
+  }
+  .psd2, .csd2 {
+    height: 5px;
+    width: 10px;
+  }
+  .psd1-1, .csd1-1,
+  .psd1-2, .csd1-2,
+  .psd1-3, .csd1-3 {
+    height: 5px;
+    width: 5px;
   }
 }
