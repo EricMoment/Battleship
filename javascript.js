@@ -20,6 +20,7 @@ const Ship = (length) => {
     hits++
     if (hits === length) {
       sunk = true
+      new Audio('sunk.mp3').play()
     }
   }
   return { isSunk, status, addPos, getPos, counted, getLength, addResponsibleDiv, getResponsibleDiv }
@@ -253,13 +254,13 @@ const Computer = () => {
     } while (board[row][column] === 'X' || board[row][column] === '*')
     let cell = document.getElementById(`${row},${column}p`)
     if (board[row][column] === ' ') {
-      cell.textContent = '*'
+      cell.style.backgroundColor = "gray";
       previousHit.cell = [row, column]/* */
       previousHit.symbol = ' '/* */
       hasJustSunkaShip = false/* */
     }
     if (board[row][column] === 'O') {
-      cell.textContent = 'X'
+      cell.style.backgroundColor = "red";
       let shipIndex;
       for (const index in playersShips) {
         //check every position of computer's ships. 
@@ -344,7 +345,10 @@ function printBoard() {
   let player_board = playerBoard.getBoard()
   //console.log(player_board)
   document.querySelectorAll('.player_square').forEach(square => { //print your board to com's side
-    square.textContent = player_board[square.id.charAt(0)][square.id.charAt(2)]
+    player_board[square.id.charAt(0)][square.id.charAt(2)] === 'O' ? 
+      square.style.backgroundColor = 'lightcoral'
+      :
+      square.style.backgroundColor = 'whitesmoke'
   })
   return { playersGen, comGen, playerBoard, comBoard }
 }
@@ -364,9 +368,9 @@ function printBoard() {
       const x = square.id.charAt(0)
       const y = square.id.charAt(2)
       if (computer_board[x][y] === ' ') {
-        square.textContent = '*'
+        square.style.backgroundColor = 'gray'
       } else if (computer_board[x][y] === 'O') {
-        square.textContent = 'X'
+        square.style.backgroundColor = 'blue'
         let shipIndex;
         for (const index in computersShips) {
           //check every position of computer's ships. 
@@ -408,10 +412,10 @@ function printBoard() {
   document.querySelector('.restart').addEventListener('click', function event() {
     /* note you can't use computerSquaresHTML here because 'return' above gets you out of function,
     hence computerSquaresHTML loses its reference. so have to queryall*/
-    document.querySelector('.your_map').textContent = "You hit computer's ships"
-    document.querySelector('.computer_map').textContent = "Computer hits your's ships"
+    document.querySelector('.your_map').textContent = "Computer hits your ships"
+    document.querySelector('.computer_map').textContent = "You hit computer's ships"
     document.querySelectorAll('.computer_square').forEach(square => {
-      square.textContent = ' ' //neccessary to clear right side (computer) board
+      square.style.backgroundColor = 'whitesmoke' //neccessary to clear right side (computer) board
       square.replaceWith(square.cloneNode(true)) //neccessary to clear repeated listeners
     })
     const {pShipDivs, cShipDivs} = shipBars()

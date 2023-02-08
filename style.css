@@ -105,7 +105,6 @@ header {
   color: red;
   border-radius: 0;
   -webkit-border-radius:0px;
-  background-color: rgb(252, 192, 192);
   border: 1px solid rgb(125, 59, 59);
 }
 
@@ -117,7 +116,6 @@ header {
   color: blue;
   border-radius: 0;
   -webkit-border-radius:0px;
-  background-color: rgb(146, 186, 223);
   border: 1px solid rgb(51, 51, 125);
 }
 
@@ -196,7 +194,7 @@ footer {
   }
   .player_square,
   .computer_square {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
   .side_details {
     display: flex;
@@ -235,7 +233,7 @@ footer {
   }
   .player_square,
   .computer_square {
-    font-size: .75rem;
+    font-size: .5rem;
   }
   .player_container,
   .computer_container {
