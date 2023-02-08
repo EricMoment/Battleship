@@ -20,7 +20,6 @@ const Ship = (length) => {
     hits++
     if (hits === length) {
       sunk = true
-      new Audio('sunk.mp3').play()
     }
   }
   return { isSunk, status, addPos, getPos, counted, getLength, addResponsibleDiv, getResponsibleDiv }

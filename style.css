@@ -223,7 +223,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
   body {
     -webkit-text-size-adjust: 0;
   }
